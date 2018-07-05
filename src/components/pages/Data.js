@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Graph from "../visualisation/Graph";
 
 class MyComponent extends Component {
     state = {
@@ -17,9 +18,15 @@ class MyComponent extends Component {
         const { currentUserName, currentUserEmail } = this.state;
         return (
             <div>
-                <h3> Welcome {currentUserName} </h3>
-                <p>Email: {currentUserEmail}</p>
+                <div>
+                    <h3> Welcome {currentUserName} </h3>
+                    <p>Email: {currentUserEmail}</p>
+                </div>
+                <div>
+                    <Graph url="abc.com" />
+                </div>
             </div>
+
         );
     }
 }
