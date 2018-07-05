@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './components/layout/navbar'
 import Home from './components/pages/home';
 import Data from './components/pages/Data';
+import Login from './components/auth/Login';
 
 function onAuthRequired({history}) {
     history.push('/login');
