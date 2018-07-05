@@ -12,6 +12,7 @@ After unzipping/cloing the repository, please follow the given steps:
 * React Router
 * Okta
 * Axios
+* D3.js
 
 ## Authentication
 
