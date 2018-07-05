@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Authentication
 
-For the sake of simplicity, the Authentication backend by Okta has been used.
+For the sake of simplicity, the Authentication backend by [Okta](https://www.okta.com/) has been used.
 
 The following credentials can be used for quick login.
 
