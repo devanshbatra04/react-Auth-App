@@ -22,15 +22,28 @@ class Graph extends Component {
                         value: obj[4]
                     }
                 });
-                console.log(res.data.dataset);
-                console.log(posts);
+                this.setState({posts});
+                console.log(this.state.posts)
+                this.drawChart(this.state.posts);
             })
+
+    }
+    drawChart(data) {
+        // var svgWidth = 600, svgHeight = 400;
+        // var margin = {top: 20, right: 20, bottom: 30, left: 50};
+        // var width = svgWidth - margin.left - margin.right;
+        // var height = svgHeight - margin.top - margin.bottom;
+        // var svg = d3.select('svg')
+        //     .attr("width", svgWidth)
+        //     .attr("height", svgHeight);
+        console.log(this.state)
     }
 
     render() {
         return (
             <div>
                 {this.props.url}
+                <svg></svg>
             </div>
         );
     }
