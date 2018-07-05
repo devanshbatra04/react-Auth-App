@@ -7,7 +7,8 @@ class Graph extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            posts2:[]
         };
     }
 
@@ -25,11 +26,27 @@ class Graph extends Component {
                 });
                 this.setState({posts});
                 console.log(this.state.posts);
-                this.drawChart(this.state.posts);
-            })
+            }).then( () => {
+                    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/FB.json?start_date=2017-03-27`)
+                    .then(res =>{
+
+                        // const posts = res.data.data.children.map(obj => obj.data);
+                        // this.setState({ posts });
+                        const posts2 = res.data.dataset.data.map(obj => {
+                            return {
+                                date: new Date(obj[0]),
+                                value: obj[4]
+                            }
+                        });
+                        this.setState({posts2});
+                        console.log(this.state.posts2);
+                        this.drawChart(this.state.posts, this.state.posts2);
+                    })
+                }
+        )
 
     }
-    drawChart(data) {
+    drawChart(data, data2) {
         var svgWidth = 600, svgHeight = 400;
         var margin = {top: 20, right: 20, bottom: 30, left: 50};
         var width = svgWidth - margin.left - margin.right;
@@ -45,7 +62,7 @@ class Graph extends Component {
         var y = d3.scaleLinear().rangeRound([height, 0]);
         var line = d3.line()
             .x(function(d) { return x(d.date)})
-            .y(function(d) { return y(d.value)})
+            .y(function(d) { return y(d.value)});
         x.domain(d3.extent(data, function(d) { return d.date }));
         y.domain(d3.extent(data, function(d) { return d.value }));
         g.append("g")
@@ -66,6 +83,14 @@ class Graph extends Component {
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "steelblue")
+            .attr("stroke-linejoin", "round")
+            .attr("stroke-linecap", "round")
+            .attr("stroke-width", 1.5)
+            .attr("d", line);
+        g.append("path")
+            .datum(data2)
+            .attr("fill", "none")
+            .attr("stroke", "red")
             .attr("stroke-linejoin", "round")
             .attr("stroke-linecap", "round")
             .attr("stroke-width", 1.5)
