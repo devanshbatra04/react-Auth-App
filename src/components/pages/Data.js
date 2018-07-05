@@ -14,9 +14,11 @@ class MyComponent extends Component {
         })
     }
     render() {
+        const { currentUserName, currentUserEmail } = this.state;
         return (
             <div>
-
+                <h3> Welcome {currentUserName} </h3>
+                <p>Email: {currentUserEmail}</p>
             </div>
         );
     }
