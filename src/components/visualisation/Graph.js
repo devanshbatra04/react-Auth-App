@@ -102,6 +102,8 @@ class Graph extends Component {
         return (
             <div>
                 <svg className="line-chart"></svg>
+                <p>The Red curve denotes FB stock and the blue curve denotes Apple's stock over one year</p>
+                <p> Data was fetched from Quandl API</p>
             </div>
         );
     }
