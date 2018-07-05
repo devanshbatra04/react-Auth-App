@@ -22,7 +22,9 @@ class App extends Component {
             <Navbar/>
             <div className="container">
                 <Route path="/" exact={true} component={Home} />
-                <Route path="/data" exact={true} component={Data}/>
+                <SecureRoute path="/data" exact={true} component={Data}/>
+                <Route path='/login' render={() => <Login baseUrl='https://dev-541367.oktapreview.com' />} />
+                <Route path='/implicit/callback' component={ImplicitCallback} />
             </div>
             </div>
           </Security>
