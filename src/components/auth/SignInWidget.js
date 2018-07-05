@@ -21,5 +21,4 @@ class SignInWidget extends Component {
         return <div />;
     }
 };
-
 export default SignInWidget;
