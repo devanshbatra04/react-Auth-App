@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
@@ -9,29 +8,6 @@ export default class Home extends Component {
 
     }
 
-    // async checkAuthentication() {
-    //     const authenticated = await this.props.auth.isAuthenticated();
-    //     if (authenticated !== this.state.authenticated) {
-    //         this.setState({ authenticated });
-    //     }
-    // }
-    //
-    //
-    //
-    // async componentDidUpdate() {
-    //     this.checkAuthentication();
-    // }
-    //
-    // async login() {
-    //     this.props.auth.login('/');
-    // }
-    //
-    // async logout() {
-    //     this.props.auth.logout('/');
-    // }
-    handleLogout(){
-        this.props.updateState();
-    }
     render() {
         console.log(this.props.appState)
         // if (this.state.authenticated === null) return null;

@@ -6,10 +6,6 @@ import Home from './components/pages/home';
 import Data from './components/pages/Data';
 import Login from './components/auth/newLogin';
 
-function onAuthRequired({history}) {
-    history.push('/login');
-}
-
 class App extends Component {
     constructor(props) {
         super(props);
