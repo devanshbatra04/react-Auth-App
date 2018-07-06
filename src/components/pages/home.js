@@ -9,8 +9,6 @@ export default class Home extends Component {
     }
 
     render() {
-        console.log(this.props.appState)
-        // if (this.state.authenticated === null) return null;
 
         const mainContent = this.props.isAuthenticated ? (
                 <div>
@@ -27,8 +25,7 @@ export default class Home extends Component {
                         You are not Logged in. Please Log in to see the data
                     </p>
 
-                    <button className="btn btn-large btn-primary">Login</button>
-                    {/*onClick={this.login}*/}
+                    <Link to="/login" className="btn btn-large btn-primary">Login</Link>
                 </div>
             );
 
