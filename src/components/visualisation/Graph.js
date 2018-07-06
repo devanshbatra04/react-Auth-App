@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import * as d3 from 'd3';
+import api_key from '../../api_key'
 
 class Graph extends Component {
 
@@ -13,7 +14,7 @@ class Graph extends Component {
     }
 
     componentDidMount(){
-        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/AAPL.json?start_date=2017-03-27`)
+        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/AAPL.json?start_date=2017-03-27&api_key=${api_key}`)
             .then(res =>{
 
                 // const posts = res.data.data.children.map(obj => obj.data);
@@ -27,7 +28,7 @@ class Graph extends Component {
                 this.setState({posts});
                 console.log(this.state.posts);
             }).then( () => {
-                    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/FB.json?start_date=2017-03-27`)
+                    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/FB.json?start_date=2017-03-27&api_key=${api_key}`)
                     .then(res =>{
 
                         // const posts = res.data.data.children.map(obj => obj.data);
