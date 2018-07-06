@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
 class LoginWrapper extends Component {
 
@@ -11,8 +12,26 @@ class LoginWrapper extends Component {
         }
     }
 
-    onFormSubmit(){
-        window.alert("Please check credentials");
+    onFormSubmit(event){
+        event.preventDefault();
+
+        var body = {
+            email: this.state.username,
+            password: this.state.password
+        }
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+            }
+        };
+        axios.post('https://quick-auth-check.herokuapp.com/login', body, config)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
     onUsernameChange(event){
@@ -34,7 +53,7 @@ class LoginWrapper extends Component {
         const mainContent = this.props.isAuthenticated ? (
             <Redirect to='/data' />
         ): (
-            <form onSubmit={this.onFormSubmit}>
+            <form onSubmit={this.onFormSubmit.bind(this)}>
                 <div className="form-group">
                     <label htmlFor="username">Enter your email</label>
                     <input id="username" value={this.state.username} onChange={this.onUsernameChange.bind(this)} name="username" className="form-control" type="text"/>
