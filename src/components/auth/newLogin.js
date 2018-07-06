@@ -25,9 +25,11 @@ class LoginWrapper extends Component {
                 'Accept': 'application/json'
             }
         };
+        let login = this.props.update;
         axios.post('https://quick-auth-check.herokuapp.com/login', body, config)
             .then(function (response) {
                 console.log(response);
+                login();
             })
             .catch(function (error) {
                 console.log(error);
