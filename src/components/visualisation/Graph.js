@@ -13,7 +13,7 @@ class Graph extends Component {
     }
 
     componentDidMount(){
-        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/AAPL.json?start_date=2017-03-27`)
+        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/AAPL.json?start_date=2017-03-27&api_key=wzN4rh3biaLFaksci2K4`)
             .then(res =>{
 
                 // const posts = res.data.data.children.map(obj => obj.data);
@@ -27,7 +27,7 @@ class Graph extends Component {
                 this.setState({posts});
                 console.log(this.state.posts);
             }).then( () => {
-                    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/FB.json?start_date=2017-03-27`)
+                    axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/FB.json?start_date=2017-03-27&api_key=wzN4rh3biaLFaksci2K4`)
                     .then(res =>{
 
                         // const posts = res.data.data.children.map(obj => obj.data);
