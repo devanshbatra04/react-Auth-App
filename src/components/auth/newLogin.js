@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 
 class LoginWrapper extends Component {
     onFormSubmit(){
 
     }
+
     render() {
-        return (
+        const mainContent = this.props.isAuthenticated ? (
+            <Redirect to='/data' />
+        ): (
             <form onSubmit={this.onFormSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Enter your email</label>
@@ -19,8 +23,16 @@ class LoginWrapper extends Component {
                     <button type="submit" className="btn btn-secondary">Log In</button>
                 </div>
 
-                
+
             </form>
+
+        );
+        return (
+            <div>
+                {mainContent}
+            </div>
+
+
         );
     }
 }
