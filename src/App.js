@@ -30,9 +30,9 @@ class App extends Component {
           <div className="App">
             <Navbar/>
                 <div className="container">
-                    <Route path="/" exact={true} render={() => <Home appState={this.state} update={this.updateState} isAuthenticated={this.state.isAuthenticated} />} />
-                    <Route path="/data" exact={true} render={() => <Data appState={this.state} isAuthenticated={this.state.isAuthenticated} />} />
-                    <Route path='/login' render={() => <Login baseUrl='https://dev-541367.oktapreview.com' />} />
+                    <Route path="/" exact={true} render={() => <Home  update={this.updateState} isAuthenticated={this.state.isAuthenticated} />} />
+                    <Route path="/data" exact={true} render={() => <Data isAuthenticated={this.state.isAuthenticated} />} />
+                    <Route path='/login' render={() => <Login isAuthenticated={this.state.isAuthenticated} update={this.updateState}  /> }/>
                 </div>
             </div>
         </Router>
