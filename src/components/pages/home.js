@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.authenticate)
+        console.log(this.props.isAuthenticated)
 
     }
 
@@ -32,21 +32,22 @@ export default class Home extends Component {
     render() {
         // if (this.state.authenticated === null) return null;
 
-        // const mainContent = this.state.authenticated ? (
-        //         <div>
-        //             <p>data</p>
-        //             <button className="btn btn-large btn-primary" onClick={this.logout}>Logout</button>
-        //         </div>
-        //     ): (
-        //         <div>
-        //             <p>
-        //                 You are not Logged in. Please Log in to see the data
-        //             </p>
-        //
-        //             <button className="btn btn-large btn-primary" onClick={this.login}>Login</button>
-        //
-        //         </div>
-        //     );
+        const mainContent = this.props.isAuthenticated ? (
+                <div>
+                    <p>You are logged in, You can see the data</p>
+                    <button className="btn btn-large btn-primary">See Data</button>
+                    <button className="btn btn-large btn-primary">Logout</button>
+                </div>
+            ): (
+                <div>
+                    <p>
+                        You are not Logged in. Please Log in to see the data
+                    </p>
+
+                    <button className="btn btn-large btn-primary" >Login</button>
+                    {/*onClick={this.login}*/}
+                </div>
+            );
 
         // return (
         //     <div>
@@ -58,7 +59,7 @@ export default class Home extends Component {
         return (
             <div className="jumbotron">
                 <h1 className="display-4"> Welcome to Data Portal </h1>
-                Hi
+                {mainContent}
 
             </div>
         );

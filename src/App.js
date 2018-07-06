@@ -15,7 +15,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            authenticated: false
+            isAuthenticated: true
         };
         this.updateState = this.updateState.bind(this);
     };
@@ -28,8 +28,8 @@ class App extends Component {
           <div className="App">
             <Navbar/>
                 <div className="container">
-                    <Route path="/" exact={true} render={() => <Home authenticate={this.updateState} />} />
-                    <Route path="/data" exact={true} render={() => <Data authenticate={this.updateState} />} />
+                    <Route path="/" exact={true} render={() => <Home isAuthenticated={this.state.isAuthenticated} />} />
+                    <Route path="/data" exact={true} render={() => <Data isAuthenticated={this.state.isAuthenticated} />} />
                     <Route path='/login' render={() => <Login baseUrl='https://dev-541367.oktapreview.com' />} />
                 </div>
             </div>
