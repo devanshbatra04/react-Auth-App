@@ -13,6 +13,7 @@ class MyComponent extends Component {
         // })
     }
     render() {
+        console.log(this.appState);
         if (!this.props.isAuthenticated) {
             return <Redirect to='/login' />
         }

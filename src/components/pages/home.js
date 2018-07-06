@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
     constructor(props) {
@@ -28,15 +29,21 @@ export default class Home extends Component {
     // async logout() {
     //     this.props.auth.logout('/');
     // }
-
+    handleLogout(){
+        this.props.updateState();
+    }
     render() {
+        console.log(this.props.appState)
         // if (this.state.authenticated === null) return null;
 
         const mainContent = this.props.isAuthenticated ? (
                 <div>
                     <p>You are logged in, You can see the data</p>
-                    <button className="btn btn-large btn-primary">See Data</button>
-                    <button className="btn btn-large btn-primary">Logout</button>
+                    <Link to="/data" className="btn btn-large btn-primary">See Data</Link>{' '}
+                    <button className="btn btn-large btn-primary" onClick={() => {
+                            this.props.update();
+                        }
+                    }>Logout</button>
                 </div>
             ): (
                 <div>
@@ -44,17 +51,11 @@ export default class Home extends Component {
                         You are not Logged in. Please Log in to see the data
                     </p>
 
-                    <button className="btn btn-large btn-primary" >Login</button>
+                    <button className="btn btn-large btn-primary">Login</button>
                     {/*onClick={this.login}*/}
                 </div>
             );
 
-        // return (
-        //     <div>
-        //         <Link to='/'>Home</Link><br/>
-        //         <Link to='/protected'>Protected</Link><br/>
-        //         {button}
-        //     </div>
 
         return (
             <div className="jumbotron">

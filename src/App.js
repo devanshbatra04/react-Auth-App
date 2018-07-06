@@ -20,7 +20,9 @@ class App extends Component {
         this.updateState = this.updateState.bind(this);
     };
     updateState() {
-        this.setState({authenticated: true});
+        console.log(this)
+        const curr = this.state.isAuthenticated;
+        this.setState({isAuthenticated: !curr });
     }
   render() {
     return (
@@ -28,8 +30,8 @@ class App extends Component {
           <div className="App">
             <Navbar/>
                 <div className="container">
-                    <Route path="/" exact={true} render={() => <Home isAuthenticated={this.state.isAuthenticated} />} />
-                    <Route path="/data" exact={true} render={() => <Data isAuthenticated={this.state.isAuthenticated} />} />
+                    <Route path="/" exact={true} render={() => <Home appState={this.state} update={this.updateState} isAuthenticated={this.state.isAuthenticated} />} />
+                    <Route path="/data" exact={true} render={() => <Data appState={this.state} isAuthenticated={this.state.isAuthenticated} />} />
                     <Route path='/login' render={() => <Login baseUrl='https://dev-541367.oktapreview.com' />} />
                 </div>
             </div>
