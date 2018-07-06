@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import Graph from "../visualisation/Graph";
+import {Redirect} from 'react-router-dom'
 
 class MyComponent extends Component {
-    state = {
-        currentUserName: '',
-        currentUserEmail:''
-    };
+
     componentDidMount(){
         // const idToken = JSON.parse(localStorage.getItem('okta-token-storage'));
         // this.setState({
@@ -15,6 +13,9 @@ class MyComponent extends Component {
         // })
     }
     render() {
+        if (!this.props.isAuthenticated) {
+            return <Redirect to='/login' />
+        }
         // const { currentUserName, currentUserEmail } = this.state;
         return (
             <div>
