@@ -2,8 +2,32 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 
 class LoginWrapper extends Component {
-    onFormSubmit(){
 
+    constructor(props){
+        super(props);
+        this.state = {
+            username: "chuck@example.com",
+            password: "Norris@1234"
+        }
+    }
+
+    onFormSubmit(){
+        window.alert("Please check credentials");
+
+    }
+    onUsernameChange(event){
+        this.setState(
+            {
+                username:event.target.value
+            }
+        )
+    }
+    onPasswordChange(event){
+        this.setState(
+            {
+                password:event.target.value
+            }
+        )
     }
 
     render() {
@@ -13,17 +37,15 @@ class LoginWrapper extends Component {
             <form onSubmit={this.onFormSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Enter your email</label>
-                    <input id="username" value="chuck@example.com" name="username" className="form-control" type="text"/>
+                    <input id="username" value={this.state.username} onChange={this.onUsernameChange.bind(this)} name="username" className="form-control" type="text"/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Enter your password</label>
-                    <input id="password" value="Norris@1234" name="password" className="form-control" type="password"/>
+                    <input id="password" value={this.state.password} onChange={this.onPasswordChange.bind(this)} name="password" className="form-control" type="password"/>
                 </div>
                 <div className="input-group-btn">
                     <button type="submit" className="btn btn-secondary">Log In</button>
                 </div>
-
-
             </form>
 
         );
